@@ -7,7 +7,23 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  
+  <script>
+async function sendMessage(user, message) {
+    const res = await fetch("https://YOUR-RENDER-URL/chat/send", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ user, message })
+    });
+    return res.json();
+}
+
+async function loadChatLog() {
+    const res = await fetch("https://YOUR-RENDER-URL/chat/log");
+    const data = await res.json();
+    console.log("Chat Log:", data.chat_history);
+}
+</script>
+
   data-color-mode="auto" data-light-theme="light" data-dark-theme="dark"
   data-a11y-animated-images="system" data-a11y-link-underlines="true"
   
